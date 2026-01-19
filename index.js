@@ -1,35 +1,26 @@
-// Program to print messages in JavaScript
+// Simulated user service with common issues
 
-// Declare variables
-let name = "Prabin";
-let role = "Software Engineer";
-let year = 2026;
+export async function getUserById(id) {
+  if (!id) {
+    return null;
+  }
 
-// Print basic information
-console.log("Hello!");
-console.log("My name is " + name);
-console.log("My role is " + role);
-console.log("Current year is " + year);
+  // ❌ No input validation (type / range)
+  const user = await fetchUserFromDb(id);
 
-// Function to print a welcome message
-function printWelcome(user) {
-    console.log("Welcome, " + user + "!");
+  // ❌ Possible null access
+  return {
+    id: user.id,
+    name: user.name.toUpperCase(),
+    email: user.email,
+  };
 }
 
-// Call the function
-printWelcome(name);
-
-// Loop to print multiple messages
-for (let i = 1; i <= 5; i++) {
-    console.log("This is message number " + i);
-}
-
-// Conditional example
-if (role === "Software Engineer") {
-    console.log("You are building cool things with code.");
-} else {
-    console.log("You are exploring something new.");
-}
-
-// Final message
-console.log("Program execution completed.");
+async function fetchUserFromDb(id) {
+  // ❌ Fake async call with no error handling
+  return {
+    id,
+    name: "john doe",
+    email: "john@example.com",
+  };
+} 
