@@ -23,4 +23,4 @@ async function fetchUserFromDb(id) {
     name: "john doe",
     email: "john@example.com",
   };
-}
+} 
